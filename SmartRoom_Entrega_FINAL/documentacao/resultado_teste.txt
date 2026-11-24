@@ -1,0 +1,18 @@
+=== SALAS ===
+Sala de aula A101 - 40 lugares | Valor base: R$ 100.00 | Aprovação de TI: Não
+Laboratório L202 - 30 lugares e 30 computadores | Valor base: R$ 180.00 | Aprovação de TI: Sim
+
+=== RESUMO DA RESERVA ===
+Solicitante: João Silva
+Descrição: Reserva de João Silva - Sala de aula A101 - 40 lugares - 2026-12-10T14:00 + Projetor 4K + Coffee Break + Suporte Técnico
+Valor total: R$ 290.00
+
+Status alterado para: CONFIRMADA
+E-mail simulado para joao@email.com: reserva CONFIRMADA
+Infraestrutura avisada: sala A101 - CONFIRMADA
+Auditoria: mudança registrada para João Silva - CONFIRMADA
+
+Status alterado para: CANCELADA
+E-mail simulado para joao@email.com: reserva CANCELADA
+Infraestrutura avisada: sala A101 - CANCELADA
+Auditoria: mudança registrada para João Silva - CANCELADA

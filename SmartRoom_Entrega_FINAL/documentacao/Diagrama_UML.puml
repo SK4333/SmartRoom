@@ -1,0 +1,85 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Usuario {
+  - nome: String
+  - email: String
+  + getNome(): String
+  + getEmail(): String
+}
+
+abstract class Sala {
+  # codigo: String
+  # capacidade: int
+  # valorBase: double
+  # requerAprovacaoTI: boolean
+  + getCodigo(): String
+  + getCapacidade(): int
+  + getValorBase(): double
+  + isRequerAprovacaoTI(): boolean
+  + getDescricaoBase(): String
+}
+class SalaAula
+class Laboratorio {
+  - quantidadeComputadores: int
+  + getQuantidadeComputadores(): int
+}
+class Auditorio {
+  - possuiSistemaSom: boolean
+  + isPossuiSistemaSom(): boolean
+}
+abstract class SalaFactory {
+  + criarSala(codigo: String): Sala
+}
+class SalaAulaFactory
+class LaboratorioFactory
+class AuditorioFactory
+
+interface ComponenteReserva {
+  + getDescricao(): String
+  + getCusto(): double
+}
+class Reserva {
+  - solicitante: Usuario
+  - sala: Sala
+  - dataHora: LocalDateTime
+  - status: StatusReserva
+  - observadores: List<ReservaObserver>
+  + adicionarObservador(o: ReservaObserver): void
+  + removerObservador(o: ReservaObserver): void
+  + alterarStatus(status: StatusReserva): void
+}
+abstract class ReservaDecorator
+class ProjetorDecorator
+class CoffeeBreakDecorator
+class SuporteTecnicoDecorator
+
+interface ReservaObserver {
+  + atualizar(status: StatusReserva, reserva: Reserva): void
+}
+class NotificadorEmail
+class EquipeInfraestrutura
+class LogAuditoria
+enum StatusReserva
+
+Sala <|-- SalaAula
+Sala <|-- Laboratorio
+Sala <|-- Auditorio
+SalaFactory ..> Sala
+SalaFactory <|-- SalaAulaFactory
+SalaFactory <|-- LaboratorioFactory
+SalaFactory <|-- AuditorioFactory
+Reserva ..|> ComponenteReserva
+ReservaDecorator ..|> ComponenteReserva
+ReservaDecorator o--> ComponenteReserva
+Reserva --> Usuario
+Reserva --> Sala
+Reserva --> StatusReserva
+Reserva o--> "0..*" ReservaObserver
+ProjetorDecorator --|> ReservaDecorator
+CoffeeBreakDecorator --|> ReservaDecorator
+SuporteTecnicoDecorator --|> ReservaDecorator
+ReservaObserver <|.. NotificadorEmail
+ReservaObserver <|.. EquipeInfraestrutura
+ReservaObserver <|.. LogAuditoria
+@enduml
